@@ -22,8 +22,6 @@ body {
     /* NÃO centraliza verticalmente */
     padding: 20px 0;
     /* espaço seguro */
-
-    overflow: hidden;
 }
 
 #start-screen {
