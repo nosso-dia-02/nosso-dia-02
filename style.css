@@ -1,0 +1,260 @@
+/* ===========================
+CSS — style.css
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #fff;
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+    /* permite crescer */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* NÃO centraliza verticalmente */
+    padding: 20px 0;
+    /* espaço seguro */
+}
+
+#start-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#start-btn {
+    background: #ff4d6d;
+    border: none;
+    padding: 18px 55px;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+    display: flex;
+    gap: 10px;
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.08)
+    }
+}
+
+#content {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.start-message{
+    color:#ffb3c1;
+    font-size:1.5rem;
+    margin-bottom:20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-10px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+
+.player {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    /* centraliza no site */
+    padding: 16px;
+
+    background:var(--soft-gray);
+    /* cinza do player */
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    position: relative;
+    /* mantém tudo dentro */
+    overflow: hidden;
+    /* impede sair do bloco */
+}
+
+.player p {
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+
+.album {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+
+    display: block;
+
+    position: relative;
+    /* NÃO absolute */
+    top: 0;
+    left: 0;
+
+    border-radius: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #000;
+    transition: width 0.3s linear;
+}
+
+#counter {
+    transition: opacity .6s ease;
+    color: #ffb3c1;
+}
+
+#counter.fade-out{
+    opacity:0;
+}
+
+#counter.fade-in{
+    opacity:1;
+}
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carousel {
+    width: 340px;
+    height: 460px;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: .5s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.arrow::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.arrow.left::before {
+    transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.arrow.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#slide-text{
+    width:100%;
+    max-width:420px;          /* mesmo tamanho do player */
+    background:var(--soft-gray);      /* MESMA cor do álbum */
+    color:#000;               /* texto preto como o player */
+    text-align:center;
+    padding:12px 16px;
+    border-radius:16px;
+    margin-top:-8px;          /* “encaixa” no bloco cinza */
+
+    opacity:0;
+    transform: translateY(6px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+#slide-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.switch-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .3);
+    color: #ffb3c1;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff4d6d;
+    animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-100vh);
+        opacity: 0
+    }
+}
+
+:root{
+    --soft-gray:#e3e3e3;
+}
