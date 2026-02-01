@@ -150,13 +150,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
 }
 
 .carousel {
-    width: 90vw;
-    height: 340px;
+    width: 92vw;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+
     background: #fff;
     border-radius: 24px;
     overflow: hidden;
